@@ -1,8 +1,6 @@
-local QBCore = exports['qb-core']:GetCoreObject()
+QBCore = exports['qb-core']:GetCoreObject()
 
-
-RegisterNetEvent("cc-fuel:server:pay")
-AddEventHandler("cc-fuel:server:pay", function(price,source) 
+RegisterNetEvent("cc-fuel:server:pay", function(price,source) 
     local xPlayer = QBCore.Functions.GetPlayer(source)
 	local amount = math.floor(price)
 
