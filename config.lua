@@ -4,13 +4,13 @@ Config = {}
 Config.FuelDecor = "_Fuel_Level"
 
 -- What should the price of jerry cans be?
-Config.JerryCanCost = 100
+Config.JerryCanCost = 750
 
 -- What keys are disabled while you're fueling.
 Config.DisableKeys = {0, 22, 23, 24, 29, 30, 31, 37, 44, 56, 82, 140, 166, 167, 168, 170, 288, 289, 311, 323}
 
 -- Modify the fuel-cost here, using a multiplier value. Setting the value to 2.0 would cause a doubled increase.
-Config.CostMultiplier = 1.5
+Config.CostMultiplier = 6.0
 
 -- Configure the strings as you wish here.
 Config.Strings = {
@@ -71,7 +71,7 @@ Config.Classes = {
 	[4] = 0.7, -- Muscle
 	[5] = 0.7, -- Sports Classics
 	[6] = 0.7, -- Sports
-	[7] = 0.8, -- Super
+	[7] = 0.7, -- Super
 	[8] = 1.0, -- Motorcycles
 	[9] = 0.7, -- Off-road
 	[10] = 0.5, -- Industrial
@@ -90,9 +90,9 @@ Config.Classes = {
 
 -- The left part is at percentage RPM, and the right is how much fuel (divided by 10) you want to remove from the tank every second
 Config.FuelUsage = {
-	[1.0] = 1.4,
-	[0.9] = 1.2,
-	[0.8] = 1.0,
+	[1.0] = 0.9,
+	[0.9] = 0.9,
+	[0.8] = 0.9,
 	[0.7] = 0.9,
 	[0.6] = 0.8,
 	[0.5] = 0.7,
@@ -118,9 +118,9 @@ Config.GasPumpModels = {
 --The rate at which fuel can be siphoned from a tank
 Config.SiphonRate = 0.25
 --The rate at which a petrol can will refuel a car
-Config.PetrolCanRefuelRate = 0.50
+Config.PetrolCanRefuelRate = 0.30
 --The rate at which a pump will refuel a car
-Config.PetrolPumpRefuelRate = 0.75
+Config.PetrolPumpRefuelRate = 1.0
 
 --Controls whether or not the vehicle will blow up if a refuel is attempted with engine on
 Config.VehicleEngineOnBlowUp = true
