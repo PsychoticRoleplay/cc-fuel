@@ -1,6 +1,6 @@
 CreateThread(function()
 
-    exports['qb-target']:AddGlobalVehicle({ 
+    exports['qb-target']:AddTargetBone(Config.PetrolCanRefuelBones,{ 
         options = {
             { 
                 type = "client",
@@ -20,10 +20,10 @@ CreateThread(function()
                 end
             },
         },
-        distance = 2.0,
+        distance = 2.5,
     })
     
-    exports['qb-target']:AddGlobalVehicle({
+    exports['qb-target']:AddTargetBone(Config.SiphonBones,{
         options = {
             {
                 type="client",
@@ -42,7 +42,7 @@ CreateThread(function()
                 end
             }
         },
-        distance = 2.0,
+        distance = 3.0,
     })
     
     exports['qb-target']:AddTargetModel(Config.GasPumpModels, {

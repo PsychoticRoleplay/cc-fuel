@@ -139,13 +139,10 @@ Config.SiphonBones = {
 	'petrolcap',
 	'boot',
 	'wheel_r',
-	'chassis',
 }
 
 Config.PetrolCanRefuelBones = {
 	'petrolcap',
 	'boot',
 	'wheel_r',
-	'chassis',
-	'handlebars',
 }
