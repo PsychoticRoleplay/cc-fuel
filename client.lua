@@ -76,7 +76,6 @@ RegisterNetEvent("cc-fuel:client:siphonfuel",function()
 
                 SetPetrolCanDurability(petrolCanDurability)
             end
-            print(petrolCanDurability)
             SetFuel(Vehicle,GetFuel(Vehicle))
         end)
 
@@ -95,7 +94,7 @@ RegisterNetEvent("cc-fuel:client:siphonfuel",function()
                 isFueling = false
             end
 
-            Wait(0)
+            Wait(1)
         end
 
         ClearPedTasks(PlayerPed)
@@ -118,7 +117,7 @@ RegisterNetEvent("cc-fuel:client:refillpetrolcan", function()
             if refillCost > 0 then
                 local currentCash = QBCore.Functions.GetPlayerData().money['cash']  
 			    if currentCash >= refillCost then
-					TriggerServerEvent('cc-fuel:server:pay', refillCost, GetPlayerServerId(PlayerId()))
+					TriggerServerEvent('cc-fuel:server:pay', refillCost)
 					SetPetrolCanDurability(100)
 				    QBCore.Functions.Notify("You refilled your petrol can","success")
                 else
@@ -136,7 +135,7 @@ RegisterNetEvent("cc-fuel:client:buypetrolcan", function()
     if currentCash >= Config.JerryCanCost then
 		TriggerServerEvent('QBCore:Server:AddItem', "weapon_petrolcan", 1)
 		TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["weapon_petrolcan"], "add")
-		TriggerServerEvent('cc-fuel:server:pay', Config.JerryCanCost, GetPlayerServerId(PlayerId()))
+		TriggerServerEvent('cc-fuel:server:pay', Config.JerryCanCost)
 		QBCore.Functions.Notify("You bought a jerry can","success")
 	else
 		QBCore.Functions.Notify("You don't have enough money to buy a jerry can","error")
@@ -192,7 +191,7 @@ RegisterNetEvent("cc-fuel:client:pumprefuel", function(pump)
             while isFueling do
                 Wait(500)
 		        
-		        local extraCost = fuelToAdd / 1.5 * Config.CostMultiplier
+		        local extraCost = fuelToAdd / 1.5 * Config.CostMultiplier -- $4
                 
                 currentFuel = currentFuel + fuelToAdd
 
@@ -203,7 +202,7 @@ RegisterNetEvent("cc-fuel:client:pumprefuel", function(pump)
 
                 currentCost = currentCost + extraCost
 
-                if currentCash >= currentCost then
+                if (currentCash - extraCost) >= currentCost then
                     SetFuel(Vehicle, currentFuel)
                 else
                     isFueling = false
@@ -230,12 +229,11 @@ RegisterNetEvent("cc-fuel:client:pumprefuel", function(pump)
                 isFueling = false
             end
 
-            Wait(0)
+            Wait(1)
         end
 
         ClearPedTasks(PlayerPed)
-
-		TriggerServerEvent('cc-fuel:server:pay', currentCost, GetPlayerServerId(PlayerId()))
+        TriggerServerEvent('cc-fuel:server:pay', currentCost)
         QBCore.Functions.Notify("You paid $" .. currentCost .. " for fuel","success")
     else
         QBCore.Functions.Notify("The tank is full","error")
