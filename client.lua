@@ -130,17 +130,14 @@ RegisterNetEvent("cc-fuel:client:refillpetrolcan", function()
     end
 end)
 
-RegisterNetEvent("cc-fuel:client:buypetrolcan", function()
-    local currentCash = QBCore.Functions.GetPlayerData().money['cash']
-    if currentCash >= Config.JerryCanCost then
-		TriggerServerEvent('QBCore:Server:AddItem', "weapon_petrolcan", 1)
-		TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["weapon_petrolcan"], "add")
-		TriggerServerEvent('cc-fuel:server:pay', Config.JerryCanCost)
-		QBCore.Functions.Notify("You bought a jerry can","success")
-	else
-		QBCore.Functions.Notify("You don't have enough money to buy a jerry can","error")
-	end
-end)
+-- RegisterNetEvent("cc-fuel:client:BuyPetrolCan", function()
+--     if currentCash >= Config.JerryCanCost then
+-- 		TriggerServerEvent('cc-fuel:server:pay', Config.JerryCanCost)
+-- 		QBCore.Functions.Notify("You bought a jerry can","success")
+-- 	else
+-- 		QBCore.Functions.Notify("You don't have enough money to buy a jerry can","error")
+-- 	end
+-- end)
 
 RegisterNetEvent("cc-fuel:client:pumprefuel", function(pump) 
     local PlayerPed = PlayerPedId()
