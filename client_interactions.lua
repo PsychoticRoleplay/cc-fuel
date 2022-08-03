@@ -1,3 +1,5 @@
+-- Calatz - 02:01AM / 03/08/2022 - GMT
+-- Reverted everything needed...
 CreateThread(function()
 
     exports['qb-target']:AddGlobalVehicle({ 
