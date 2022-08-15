@@ -72,18 +72,32 @@ CreateThread(function()
         },
         distance = 3.0
     })
-    if Config.Blips then
+end)
+
+local showBlips = false
+local FuelStationBlip = {}
+
+AddEventHandler('qb-radialmenu:toggleFuelBlips',function(name) 
+    showBlips = not showBlips
+    if showBlips then
+        local i = 0
         for k, v in pairs(Config.FuelStations) do
-            FuelStationBlip = AddBlipForCoord(v.x, v.y, v.z)
-            SetBlipSprite(FuelStationBlip, Config.BlipSpirte)
-            SetBlipDisplay(FuelStationBlip, 2)
-            SetBlipScale(FuelStationBlip, Config.BlipSize)
-            SetBlipAsShortRange(FuelStationBlip, true)
-            SetBlipColour(FuelStationBlip, Config.BlipColor)
+            i += 1
+            FuelStationBlip[i] = AddBlipForCoord(v.x, v.y, v.z)
+            SetBlipSprite(FuelStationBlip[i], Config.BlipSpirte)
+            SetBlipDisplay(FuelStationBlip[i], 2)
+            SetBlipScale(FuelStationBlip[i], Config.BlipSize)
+            SetBlipAsShortRange(FuelStationBlip[i], true)
+            SetBlipColour(FuelStationBlip[i], Config.BlipColor)
             BeginTextCommandSetBlipName("STRING")
             AddTextComponentSubstringPlayerName(Config.BlipLabel)
-            EndTextCommandSetBlipName(FuelStationBlip)
+            EndTextCommandSetBlipName(FuelStationBlip[i])
         end
+    else 
+        for i = 1, #FuelStationBlip do
+            RemoveBlip(FuelStationBlip[i])
+        end
+        FuelStationBlip = {}
     end
 end)
 
