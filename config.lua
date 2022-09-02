@@ -110,7 +110,8 @@ Config.GasPumpModels = {
     "prop_gas_pump_1c",
     "prop_vintage_pump",
     "prop_gas_pump_old2",
-    "prop_gas_pump_old3"
+    "prop_gas_pump_old3",
+	-1768083639,
 }
 
 --Fueling rates, higher numbers = faster fueling
